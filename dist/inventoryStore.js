@@ -72,8 +72,8 @@ var InventoryStore = /** @class */ (function () {
             addError("", "item is null");
             return errors;
         }
-        if (!item.type) {
-            addError("type", "Please select a valid Category");
+        if (!item.inventoryType) {
+            addError("inventoryType", "Please select a valid Category");
         }
         if (!item.name) {
             addError("name", "Name must be greater then 5 characters long");
@@ -85,7 +85,7 @@ var InventoryStore = /** @class */ (function () {
             addError("assignedTo", "Please select a Sub-Category");
         }
         //#endregion
-        switch (item.type) {
+        switch (item.inventoryType) {
             // Computer-specific validation
             case "computer":
                 if (item.year > new Date().getFullYear()) {
@@ -118,7 +118,7 @@ var InventoryStore = /** @class */ (function () {
         this._items.splice(this._items.findIndex(item), 1);
         return this._save();
     };
-    //#region Private methods
+    //#region Protected methods
     /*  NOTE:
      *  This demo uses local storage to save and load inventory items,
      *  but in a real app these would be AJAX calls to a server.
@@ -158,3 +158,4 @@ var InventoryStore = /** @class */ (function () {
 }());
 // Expose the singleton in its own variable
 var inventoryStore = InventoryStore.instance;
+inventoryStore._save({});
