@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 var InventoryStore = /** @class */ (function () {
     function InventoryStore() {
         this._categories = [];
@@ -158,5 +156,5 @@ var InventoryStore = /** @class */ (function () {
     InventoryStore.instance = new InventoryStore();
     return InventoryStore;
 }());
-// Expose the singleton as the default export
-exports.default = InventoryStore.instance;
+// Expose the singleton in its own variable
+var inventoryStore = InventoryStore.instance;
